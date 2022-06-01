@@ -8,7 +8,7 @@ function getList() {
 
 socket.on('data', (a) => {
     seatData = a
-    console.log(seatData);
+    disabled(seatData)
 })
 
 function addSeat(x, y, z) {

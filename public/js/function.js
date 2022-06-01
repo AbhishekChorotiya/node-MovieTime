@@ -15,3 +15,14 @@ function seatCheck(i) {
     }
 
 }
+
+const disabled = (seatData)=>{
+    
+    var seats = seatData.filter((seat)=>{
+         return seat.booked === true
+     })
+ 
+    //  seats.forEach((seat) => {
+    //      document.getElementById(`G${seat.id}`).disabled = true
+    //  })
+ }
