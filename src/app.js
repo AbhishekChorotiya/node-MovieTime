@@ -20,10 +20,18 @@ io.on('connection',(socket)=>{
         socket.emit('data',data)
     })
 
-   socket.on('addSeat',(data)=>{
-       console.log(data);
-        addSeat(data.id,data.booked,data.owner)
-   })
+    socket.on('book', (data)=>{
+        remove(data)
+        book(data,'Abhishek')
+    })
+    
+    socket.on('remove',(data)=>{
+        remove(data)
+    })
+//    socket.on('addSeat',(data)=>{
+//        console.log(data);
+//         addSeat(data.id,data.booked,data.owner)
+//    })
 })
 
 

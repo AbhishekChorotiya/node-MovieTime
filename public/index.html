@@ -11,12 +11,17 @@
     <div class="row" id="gold">
 
 
-        <button id="G1" class="gold" onclick="seatCheck(1);addSeat(1,true,'Abhishek')">G1</button>
+        <button id="G1" class="gold" onclick="seatCheck(1);">G1</button>
         <button id="G2" class="gold" onclick="seatCheck(2)">G2</button>
         <button id="G3" class="gold" onclick="seatCheck(3)">G3</button>
         <button id="G4" class="gold" onclick="seatCheck(4)">G4</button>
         <button id="G5" class="gold" onclick="seatCheck(5)">G5</button>
 
+    </div>
+
+    <div id="pay">
+        <a id="amount">Payable Amount : </a>  <p id="price">0</p>
+        <button class="gold">PAY</button>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/backend.js"></script>

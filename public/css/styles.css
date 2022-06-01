@@ -1,5 +1,21 @@
+#price{
+  font-size: 30px;
+  color: rgb(240, 0, 0);
 
+}
 
+#pay{
+  margin: 50px;
+  border: 2px solid black;
+  padding: 10px;
+  width: 250px;
+
+}
+
+#amount {
+  font-size: 25px;
+  color: blue;
+}
 
 
 .gold {
