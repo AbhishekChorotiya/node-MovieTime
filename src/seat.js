@@ -65,9 +65,9 @@ function save(x){
 
 // remove(2)
 
-// for (let i = 1; i <=5; i++){
-//     addSeat(i,false) 
-// }
+for (let i = 1; i <=5; i++){
+    addSeat(i,false) 
+}
 
 // for (let i = 1; i <=5; i++){
 //     remove(i) 
