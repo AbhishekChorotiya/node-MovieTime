@@ -62,12 +62,28 @@ function save(x){
     fs.writeFileSync('seats.json',mainData)
 }
 
+const getList = ()=>{
+   
+    try{
+
+        const dataBuffer = fs.readFileSync('seats.json')
+        const dataStr = dataBuffer.toString()
+        return JSON.parse(dataStr)
+    
+    }
+    catch(e){
+        return []
+    }
+
+}
+
+
 
 // remove(2)
 
-for (let i = 1; i <=5; i++){
-    addSeat(i,false) 
-}
+// for (let i = 1; i <=5; i++){
+//     addSeat(i,false) 
+// }
 
 // for (let i = 1; i <=5; i++){
 //     remove(i) 
@@ -77,5 +93,6 @@ for (let i = 1; i <=5; i++){
 module.exports = {
     addSeat,
     remove,
-    book
+    book,
+    getList
 }
