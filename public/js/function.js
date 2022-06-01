@@ -11,7 +11,7 @@ function seatCheck(i) {
         element.style.backgroundColor = 'rgb(10, 233, 84)';
         bookk(i)
         price += 150
-        document.getElementById('price').innerHTML = price
+        document.getElementById('price').value = price
         console.log(price);
         console.log('booked');
     }
@@ -20,7 +20,7 @@ function seatCheck(i) {
         element.style.backgroundColor = '#FFFFFF';
         removee(i)
         price -= 150
-        document.getElementById('price').innerHTML = price
+        document.getElementById('price').value = price
         console.log(price);
         console.log('removed');
     }
