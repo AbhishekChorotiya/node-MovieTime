@@ -81,7 +81,7 @@ const getList = ()=>{
    
     try{
 
-        const dataBuffer = fs.readFileSync('seats.json')
+        const dataBuffer = fs.readFileSync('conform.json')
         const dataStr = dataBuffer.toString()
         return JSON.parse(dataStr)
     

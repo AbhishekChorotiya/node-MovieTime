@@ -10,13 +10,29 @@
 <body id="body">
 
     <div>
-        <button id="conform" class="gold" onclick="conformm()">Payment Successful</button>
-        <button id="failed" class="goldF" onclick="failedd()">Payment Failed</button>
+        <button id="conform" class="gold" onclick="conformm();disable();home()">Payment Successful</button>
+        <button id="failed" class="goldF" onclick="failedd();disable();home()">Payment Failed</button>
+        <p id="paymentPage"></p>
 
     </div>
         <script src="/socket.io/socket.io.js"></script>
         <script src="js/backend.js"></script>
         <script src="js/function.js"></script>
+        <script>
+            function disable(){
+                document.getElementById('conform').disabled=true;
+                document.getElementById('failed').disabled=true;
+
+            }
+
+            function home(){
+
+                const myTimeout = setTimeout(change, 1000);
+                function change(){
+                    location.pathname = '/'
+                }
+            }
+        </script>
 </body>
 
 </html>

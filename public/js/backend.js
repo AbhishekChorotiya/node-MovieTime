@@ -22,6 +22,7 @@ function removee(x){
 
 function conformm(){
     socket.emit('conform')
+
 }
 
 function failedd(){

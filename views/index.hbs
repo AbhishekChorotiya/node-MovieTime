@@ -11,18 +11,15 @@
     <div class="row" id="gold">
 
 
-        <button id="G1" class="gold" onclick="seatCheck(1);">G1</button>
-        <button id="G2" class="gold" onclick="seatCheck(2)">G2</button>
-        <button id="G3" class="gold" onclick="seatCheck(3)">G3</button>
-        <button id="G4" class="gold" onclick="seatCheck(4)">G4</button>
-        <button id="G5" class="gold" onclick="seatCheck(5)">G5</button>
+        {{>seats}}
+        
 
     </div>
 
     <div id="pay">
         <a id="amount">Payable Amount : </a>  
         <form action="/play" method="post">
-        <input id="price" type="text" name="price"></input>
+        <input id="price" type="text" name="price" style="border: none;margin:20px"></input>
         <button class="gold" type="submit">PAY</button>
         </form>
     </div>

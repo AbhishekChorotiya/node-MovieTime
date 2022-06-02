@@ -48,7 +48,7 @@
   background-color: rgb(255, 78, 78);
 }
 
-.gold:disabled{
+.gold:disabled, .goldF:disabled{
     background-color: #929aac;
 }
 

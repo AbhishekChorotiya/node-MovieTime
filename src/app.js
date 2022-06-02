@@ -52,7 +52,7 @@ app.post('/play', async (req,res)=>{
 
     try {
         
-        const pr = req.body
+        const pr = req.body.price
         console.log(pr)
         res.render('play')
 

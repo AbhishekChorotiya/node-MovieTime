@@ -33,7 +33,7 @@ const disabled = (seatData)=>{
          return seat.booked === true
      })
  
-    //  seats.forEach((seat) => {
-    //      document.getElementById(`G${seat.id}`).disabled = true
-    //  })
+     seats.forEach((seat) => {
+         document.getElementById(`G${seat.id}`).disabled = true
+     })
  }
