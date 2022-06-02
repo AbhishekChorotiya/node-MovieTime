@@ -20,6 +20,14 @@ function removee(x){
     socket.emit('remove',x)
 }
 
+function conformm(){
+    socket.emit('conform')
+}
+
+function failedd(){
+    socket.emit('failed')
+}
+
 // function addSeat(x, y, z) {
 
 //     // console.log(x,y,z);

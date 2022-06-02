@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { stringify } = require('querystring');
 
 class seat {
     constructor(id, booked,owner) {
@@ -56,6 +57,20 @@ function loadSeat(){
     }
 }
 
+function loadConform(){
+    try{
+
+        const dataBuffer = fs.readFileSync('conform.json')
+        const dataStr = dataBuffer.toString()
+        return JSON.parse(dataStr)
+    
+    }
+    catch(e){
+        return []
+    }
+}
+
+
 function save(x){
 
     mainData = JSON.stringify(x)
@@ -77,6 +92,21 @@ const getList = ()=>{
 
 }
 
+const conform = (id,booked,owner)=>{
+    seatFile = loadSeat()
+    mainData = JSON.stringify(seatFile)
+    fs.writeFileSync('conform.json', mainData)
+}
+
+const failed = ()=>{
+
+    seatConform = loadConform()
+    seatFile = loadSeat()
+    seatFile = seatConform
+
+    save(seatFile)
+}
+
 
 
 // remove(2)
@@ -94,5 +124,7 @@ module.exports = {
     addSeat,
     remove,
     book,
-    getList
+    getList,
+    conform,
+    failed
 }
