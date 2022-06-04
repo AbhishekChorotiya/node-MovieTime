@@ -10,29 +10,38 @@
 <body id="body">
 
     <div>
-        <button id="conform" class="gold" onclick="conformm();disable();home()">Payment Successful</button>
-        <button id="failed" class="goldF" onclick="failedd();disable();home()">Payment Failed</button>
+        <button id="conform" class="gold" onclick="checkConf();disable();home()">Payment Successful</button>
+        <button id="failed" class="goldF" onclick="disable();home();failed()">Payment Failed</button>
         <p id="paymentPage"></p>
 
     </div>
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="js/backend.js"></script>
-        <script src="js/function.js"></script>
-        <script>
-            function disable(){
-                document.getElementById('conform').disabled=true;
-                document.getElementById('failed').disabled=true;
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/backend.js"></script>
+    <script src="js/function.js"></script>
+    <script src="js/conform.js"></script>
+    <script>
+        function disable() {
+            document.getElementById('conform').disabled = true;
+            document.getElementById('failed').disabled = true;
 
+        }
+
+        function home() {
+
+            const myTimeout = setTimeout(change, 1000);
+            function change() {
+                location.pathname = '/home'
             }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script>
+    
+        function conformm(username) {
+            socket.emit('conform', username)
 
-            function home(){
-
-                const myTimeout = setTimeout(change, 1000);
-                function change(){
-                    location.pathname = '/'
-                }
-            }
-        </script>
+        }
+    </script>
 </body>
 
 </html>

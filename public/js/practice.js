@@ -1,20 +1,3 @@
-
-// Button click-unclick property
-
-document.getElementById('ggold1').innerHTML = 'G1'
-
-function hi(){
-
-
-
-    if(document.getElementById('ggold1').innerHTML == 'G1'){
-        document.getElementById('ggold1').innerHTML = 'G1.'
-        console.log('clicked')
-    }
-    else{
-        document.getElementById('ggold1').innerHTML = 'G1'
-
-        console.log('see')            
-    }
-
-}
+const arr = [[{"id":5,"booked":true,"owner":"kk"},{"id":6,"booked":true,"owner":"kk"},{"id":7,"booked":true,"owner":"kk"},{"id":8,"booked":true,"owner":"kk"}],[{"id":10,"booked":true,"owner":"admin"},{"id":11,"booked":true,"owner":"admin"}]]
+arr.pop()
+console.log(arr);

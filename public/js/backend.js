@@ -12,22 +12,20 @@ socket.on('data', (a) => {
     disabled(seatData)
 })
 
-function bookk(x){
-    socket.emit('book',x)
+
+
+function bookk(x,y){
+    socket.emit('book',{x:x,y:y})
 }
 
-function removee(x){
-    socket.emit('remove',x)
+function removee(x,y){
+    socket.emit('remove',{x:x,y:y})
 }
 
-function conformm(){
-    socket.emit('conform')
-
-}
-
-function failedd(){
+function failed(){
     socket.emit('failed')
 }
+
 
 // function addSeat(x, y, z) {
 

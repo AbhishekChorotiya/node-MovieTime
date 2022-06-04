@@ -13,18 +13,18 @@ class seat {
 
 const addSeat = (id,booked,owner)=>{
     
-    seatFile = loadSeat()
+    seatFile = loadSeat(owner)
     const G1 = new seat(id,booked,owner);
     
     seatFile.push(G1)
-    save(seatFile)
+    save(seatFile,owner)
 
 }
 
-const remove = (id)=>{
+const remove = (id,owner)=>{
 
     let sn = id + 1
-    seatFile = loadSeat()
+    seatFile = loadSeat(owner)
 
     const idSearch = seatFile.filter(function(seat){
 
@@ -32,22 +32,35 @@ const remove = (id)=>{
         
     })
     
-    save(idSearch)
+    save(idSearch,owner)
 
 }
 
 const book = (id,owner)=>{
 
-    seatFile = loadSeat()
-    remove(id)
+    seatFile = loadSeat(owner)
+    remove(id,owner)
     addSeat(id,true,owner)
 
 }
 
-function loadSeat(){
+function loadSeat(owner){
     try{
 
-        const dataBuffer = fs.readFileSync('seats.json')
+        const dataBuffer = fs.readFileSync(`${owner}.json`)
+        const dataStr = dataBuffer.toString()
+        return JSON.parse(dataStr)
+    
+    }
+    catch(e){
+        return []
+    }
+}
+
+function loadFinal(){
+    try{
+
+        const dataBuffer = fs.readFileSync('final.json')
         const dataStr = dataBuffer.toString()
         return JSON.parse(dataStr)
     
@@ -71,10 +84,10 @@ function loadConform(){
 }
 
 
-function save(x){
+const save = (x,y)=>{
 
     mainData = JSON.stringify(x)
-    fs.writeFileSync('seats.json',mainData)
+    fs.writeFileSync(`${y}.json`,mainData)
 }
 
 const getList = ()=>{
@@ -92,19 +105,45 @@ const getList = ()=>{
 
 }
 
-const conform = (id,booked,owner)=>{
-    seatFile = loadSeat()
-    mainData = JSON.stringify(seatFile)
+const conform = (username)=>{
+    seatConform = loadConform()
+    seatFile = loadSeat(username)
+    seatConform.push(seatFile)
+    mainData = JSON.stringify(seatConform)
     fs.writeFileSync('conform.json', mainData)
+    fs.unlinkSync(`${username}.json`)
+}
+
+const list = ()=>{
+   
+    try{
+
+        const dataBuffer = fs.readFileSync('conform.json')
+        const dataStr = dataBuffer.toString()
+        return JSON.parse(dataStr)
+    
+    }
+    catch(e){
+        return []
+    }
+
+}
+const final = ()=>{
+    seatConform = loadFinal()
+    seatFile = loadConform()
+    seatConform.push(seatFile)
+    mainData = JSON.stringify(seatConform)
+    fs.writeFileSync('final.json', mainData)
 }
 
 const failed = ()=>{
 
-    seatConform = loadConform()
-    seatFile = loadSeat()
+    seatConform = loadFinal()
+    seatFile = loadConform()
     seatFile = seatConform
 
-    save(seatFile)
+    mainData = JSON.stringify(seatFile)
+    fs.writeFileSync('conform.json',mainData)
 }
 
 
@@ -126,5 +165,9 @@ module.exports = {
     book,
     getList,
     conform,
-    failed
+    list,
+    final,
+    failed,
+    save
+    // failed
 }

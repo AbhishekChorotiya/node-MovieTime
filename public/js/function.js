@@ -9,31 +9,60 @@ function seatCheck(i) {
     if (element.innerHTML == `G${i}`) {
         element.innerHTML = `G${i}.`
         element.style.backgroundColor = 'rgb(10, 233, 84)';
-        bookk(i)
+        const { username } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+        bookk(i, username)
         price += 150
         document.getElementById('price').value = price
         console.log(price);
-        console.log('booked');
+        console.log('booked  ', i);
     }
     else {
         element.innerHTML = `G${i}`
         element.style.backgroundColor = '#FFFFFF';
-        removee(i)
+        const { username } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+        removee(i, username)
         price -= 150
         document.getElementById('price').value = price
         console.log(price);
-        console.log('removed');
+        console.log('removed  ', i);
     }
 
 }
 
-const disabled = (seatData)=>{
+function split(array) {
+
+    var a = []
+
+    array.forEach((num)=>{
+        num.forEach((n)=>{
+            a.push(n)
+        })
+    })
+    return a
+}
+
+function splittt(array){
+    var a = []
+array.forEach(num =>{
+    num.forEach(n=>{
+        n.forEach(m=>{
+            a.push(m)
+        })
+    })
+})
+return a
+}
+
+const disabled = (seatData) => {
+
+    b = split(seatData)
     
-    var seats = seatData.filter((seat)=>{
-         return seat.booked === true
-     })
- 
-     seats.forEach((seat) => {
-         document.getElementById(`G${seat.id}`).disabled = true
-     })
- }
+
+    var seats = b.filter((seat) => {
+        return seat.booked === true
+    })
+
+    seats.forEach((seat) => {
+        document.getElementById(`G${seat.id}`).disabled = true
+    })
+}

@@ -7,7 +7,7 @@ const express = require('express')
 const hbs = require('hbs')
 const bodyParser= require("body-parser")
 const socketio = require('socket.io')
-const {addSeat,book,remove,getList,conform,failed} = require('./seat');
+const {addSeat,book,remove,getList,conform,list,final,failed,save} = require('./seat');
 const async = require('hbs/lib/async');
 
 
@@ -15,7 +15,7 @@ app = express()
 const server = http.createServer(app)
 const io = socketio(server)
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3000
 
 //defining paths for express config
 const publicDir = path.join(__dirname, "../public")
@@ -44,6 +44,10 @@ app.get('', (req,res)=>{
             
  })
 
+ app.get('/home',(req,res)=>{
+    res.render("home")
+})
+
 app.get('/play',(req,res)=>{
     res.render("play")
 })
@@ -71,21 +75,35 @@ io.on('connection',(socket)=>{
     })
 
     socket.on('book', (data)=>{
-        remove(data)
-        book(data,'Abhishek')
+        remove(data.x,data.y)
+        book(data.x,data.y)
     })
     
     socket.on('remove',(data)=>{
-        remove(data)
+        remove(data.x,data.y)
     })
 
-    socket.on('conform',()=>{
-        conform()
+    socket.on('conform',(x)=>{
+        conform(x)
     })
 
     socket.on('failed',()=>{
         failed()
     })
+
+    socket.on('list',()=>{
+        data = list()
+        socket.emit('listt',data)
+    })
+
+    socket.on('rev',(a)=>{
+        save(a,'conform')
+    })
+
+    socket.on('final',()=>{
+        final()
+    })
+
 //    socket.on('addSeat',(data)=>{
 //        console.log(data);
 //         addSeat(data.id,data.booked,data.owner)

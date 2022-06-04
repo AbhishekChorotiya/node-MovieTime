@@ -1,31 +1,19 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Chat App</title>
 
-<head>
-    <title>MovieTime</title>
-    <link rel="stylesheet" href="./css/styles.css">
-
-</head>
-
-<body onload="getList()">
-    <div class="row" id="gold">
-
-
-        {{>seats}}
-        
-
-    </div>
-
-    <div id="pay">
-        <a id="amount">Payable Amount : </a>  
-        <form action="/play" method="post">
-        <input id="price" type="text" name="price" style="border: none;margin:20px"></input>
-        <button class="gold" type="submit">PAY</button>
-        </form>
-    </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="js/backend.js"></script>
-    <script src="js/function.js"></script>
-</body>
-
+    </head>
+    <body>
+        <div class="centered-form">
+            <div class="centered-form__box">
+                <h1>Join</h1>
+                <form action="/home">
+                    <label>Display name</label>
+                    <input type="text" name="username" placeholder="Display name" required>
+                    <button>Join</button>
+                </form>
+            </div>
+        </div>
+    </body>
 </html>
